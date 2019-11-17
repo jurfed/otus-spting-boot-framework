@@ -1,0 +1,47 @@
+application:
+  name: Vasiliy
+  version: 1.0
+  csvpathRu: questionsRu.csv
+  csvpathEn: questionsEn.csv
+
+  questionsRu:
+    - Сколько дней в неделе?
+    - Что такое java?
+    - сколько будет 5+2?
+    - Что такое iphone?
+    - Что такое c++ ?
+
+  answersRu:
+    - 3, 5, 7
+    - coffee, program language, java-script
+    - 7, 34, 6
+    - televisor, telephone, computer
+    - calculator, machine, program language
+
+  currentAnswerRu:
+    - 7
+    - programm language
+    - 7
+    - telephone
+    - program language
+
+  questionsEn:
+    - how Many days in a week?
+    - Java Java?
+    - how much is 5+2?
+    - iPhone iPhone?
+    - What is C++?
+
+  answersEn:
+    - 3, 5, 7
+    - coffee, program language, java script
+    - 7, 34, 6
+    - TV, telephone, computer
+    - calculator, machine, program language
+
+  currentAnswerEn:
+    - 7
+    - programm language
+    - 7
+    - telephone
+    - program language
