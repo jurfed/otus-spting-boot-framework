@@ -1,11 +1,5 @@
 package ru.jurfed.springbootproject.dao;
 
-
-import com.opencsv.CSVReader;
-
-import javax.xml.bind.annotation.XmlAnyElement;
-import java.io.*;
-import java.util.ArrayList;
 import java.util.List;
 
 public class SimpleTest implements TestDao {
