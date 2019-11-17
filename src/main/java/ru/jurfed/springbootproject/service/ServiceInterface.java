@@ -13,9 +13,9 @@ public interface ServiceInterface {
 
     public TestDao getTestDao();
 
-    public void enterYouName() throws IOException;
+    public void name(String name) throws IOException;
 
-    public void startTests();
+    public void start();
 
     public void checkQuestion(String a, String b);
 

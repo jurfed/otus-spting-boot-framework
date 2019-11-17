@@ -1,11 +1,9 @@
 package ru.jurfed.springbootproject.config;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import ru.jurfed.springbootproject.dao.Logger2;
 import ru.jurfed.springbootproject.dao.SimpleTest;

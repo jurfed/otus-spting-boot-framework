@@ -1,7 +1,9 @@
 package ru.jurfed.springbootproject.service;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.shell.standard.ShellComponent;
+import org.springframework.shell.standard.ShellMethod;
+import org.springframework.shell.standard.ShellOption;
 import org.springframework.stereotype.Service;
 import ru.jurfed.springbootproject.dao.TestDao;
 import ru.jurfed.springbootproject.user.SimpleUser;
@@ -12,10 +14,15 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-@Service("myService1")
+@ShellComponent("myService1")
 public class SimpleService implements ServiceInterface {
 
-//    @Autowired
+
+    public SimpleService() {
+        System.out.println("Enter your name: ");
+    }
+
+    //    @Autowired
     TestDao testDao;
 
     String name;
@@ -41,15 +48,15 @@ public class SimpleService implements ServiceInterface {
         return testDao;
     }
 
-    public void enterYouName() throws IOException {
-        System.out.println("Please enter your name\n");
+    @ShellMethod("Enter your name: ")
+    public void name(@ShellOption(defaultValue = "Petia") String name){
         Scanner scanner = new Scanner(System.in);
-        name = scanner.nextLine();
         userDao = new SimpleUser(name);
         System.out.println("Hello! " + name);
     }
 
-    public void startTests() {
+    @ShellMethod("Start test")
+    public void start() {
         userDao.setCorrectQuestions(0);
         List<String> questions = testDao.getQuestions();
         List<String> answers = testDao.getAnswers();
@@ -68,6 +75,7 @@ public class SimpleService implements ServiceInterface {
         System.out.println("Your result is: " + userDao.getCorrectQuestions() +" correct answers");
 
     }
+
 
     public void checkQuestion(String a, String b){
         if(a.equals(b)){
