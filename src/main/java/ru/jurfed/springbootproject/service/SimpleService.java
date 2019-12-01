@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 import org.springframework.shell.standard.ShellOption;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import ru.jurfed.springbootproject.dao.TestDao;
 import ru.jurfed.springbootproject.user.SimpleUser;
@@ -14,7 +15,8 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-@ShellComponent("myService1")
+@Component("myService1")
+//@ShellComponent("myService1")
 public class SimpleService implements ServiceInterface {
 
 
@@ -48,14 +50,14 @@ public class SimpleService implements ServiceInterface {
         return testDao;
     }
 
-    @ShellMethod("Enter your name: ")
-    public void name(@ShellOption(defaultValue = "Petia") String name){
-        Scanner scanner = new Scanner(System.in);
+//    @ShellMethod("Enter your name: ")
+//    public void name(@ShellOption(defaultValue = "Petia") String name){
+    public void name(String name){
         userDao = new SimpleUser(name);
         System.out.println("Hello! " + name);
     }
 
-    @ShellMethod("Start test")
+//    @ShellMethod("Start test")
     public void start() {
         userDao.setCorrectQuestions(0);
         List<String> questions = testDao.getQuestions();
