@@ -3,21 +3,15 @@ package ru.jurfed.springbootproject.config;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
-import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
-import ru.jurfed.springbootproject.dao.Logger2;
-import ru.jurfed.springbootproject.dao.SimpleTest;
+import ru.jurfed.springbootproject.dao.TestDaoImpl;
 import ru.jurfed.springbootproject.dao.TestDao;
 
-import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.Locale;
 
-@EnableAspectJAutoProxy
 @ConfigurationProperties("application")
 @Configuration
 public class DaoConfig {
-
 
     private double version;
 
@@ -29,6 +23,17 @@ public class DaoConfig {
 
     private List<String> currentAnswerRu;
     private List<String> currentAnswerEn;
+
+    @Bean(name = "testDaoImpl")
+    public TestDao getTestDao(){
+        String locale = Locale.getDefault().getLanguage();
+        if (locale.equals("ru")) {
+            return new TestDaoImpl(questionsRu, answersRu, currentAnswerRu);
+        } else {
+            return new TestDaoImpl(questionsEn, answersEn, currentAnswerEn);
+
+        }
+    }
 
     public List<String> getCurrentAnswerRu() {
         return currentAnswerRu;
@@ -86,25 +91,5 @@ public class DaoConfig {
         this.version = version;
     }
 
-    @Bean(name = "simpleDao")
-    public TestDao getTestDao() throws FileNotFoundException {
-        String locale = Locale.getDefault().getLanguage();
-        if (locale.equals("ru")) {
-            return new SimpleTest(questionsRu, answersRu, currentAnswerRu);
-        } else {
-            return new SimpleTest(questionsEn, answersEn, currentAnswerEn);
-
-        }
-    }
-
-    @Bean
-    public Logger2 getlogger2() {
-        return new Logger2();
-    }
-
-    @Bean
-    public static PropertySourcesPlaceholderConfigurer getConfigurer() {
-        return new PropertySourcesPlaceholderConfigurer();
-    }
 
 }

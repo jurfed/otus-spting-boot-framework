@@ -15,8 +15,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-@Component("myService1")
-//@ShellComponent("myService1")
+@ShellComponent("simpleService")
 public class SimpleService implements ServiceInterface {
 
 
@@ -50,14 +49,13 @@ public class SimpleService implements ServiceInterface {
         return testDao;
     }
 
-//    @ShellMethod("Enter your name: ")
-//    public void name(@ShellOption(defaultValue = "Petia") String name){
-    public void name(String name){
+    @ShellMethod("Enter your name: ")
+    public void name(@ShellOption(defaultValue = "Petia") String name){
         userDao = new SimpleUser(name);
         System.out.println("Hello! " + name);
     }
 
-//    @ShellMethod("Start test")
+    @ShellMethod("Start test")
     public void start() {
         userDao.setCorrectQuestions(0);
         List<String> questions = testDao.getQuestions();

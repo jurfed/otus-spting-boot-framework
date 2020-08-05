@@ -11,11 +11,9 @@ import ru.jurfed.springbootproject.service.ServiceInterface;
 @SpringBootApplication
 public class SpringBootProjectApplication {
 
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args){
 		ConfigurableApplicationContext context = SpringApplication.run(SpringBootProjectApplication.class, args);
-		ServiceInterface myService = (ServiceInterface) context.getBean("myService1");
-
-		//myService.enterYouName();
+		ServiceInterface myService = (ServiceInterface) context.getBean("simpleService");
 		myService.start();
 	}
 

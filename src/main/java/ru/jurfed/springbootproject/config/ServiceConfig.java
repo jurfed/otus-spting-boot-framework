@@ -6,9 +6,5 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 @Configuration
 @ComponentScan("ru.jurfed.springbootproject.service")
-@EnableAspectJAutoProxy
 public class ServiceConfig {
-
-
-
 }

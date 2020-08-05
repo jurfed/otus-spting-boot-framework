@@ -21,7 +21,4 @@ public class LoggingAspect {
         System.out.println("within Вызов метода " + joinPoint.getSignature().getName());
     }
 
-    public LoggingAspect() {
-        System.out.println();
-    }
 }
